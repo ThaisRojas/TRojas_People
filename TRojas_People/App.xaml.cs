@@ -4,16 +4,16 @@ namespace TRojas_People;
 
 public partial class App : Application
 {
-    private static NotesDatabase database;
+    private static PersonaDatabase database;
 
-    public static NotesDatabase Database
+    public static PersonaDatabase Database
     {
         get
         {
             if (database == null)
             {
                 string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "notes.db3");
-                database = new NotesDatabase(dbPath);
+                database = new PersonaDatabase(dbPath);
             }
             return database;
         }

@@ -3,11 +3,11 @@ using TRojas_People.Models;
 
 namespace TRojas_People.Data
 {
-    public class NotesDatabase
+    public class PersonaDatabase
     {
         readonly SQLiteAsyncConnection _database;
 
-        public NotesDatabase(string dbPath)
+        public PersonaDatabase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Persona>().Wait();
