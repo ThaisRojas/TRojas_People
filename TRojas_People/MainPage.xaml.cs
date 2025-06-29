@@ -1,24 +1,35 @@
-﻿namespace TRojas_People
+﻿using TRojas_People.Models;
+
+namespace TRojas_People;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        int count = 0;
+        InitializeComponent();
+        LoadNotes(); // Carga notas al iniciar
+    }
 
-        public MainPage()
+    private async void OnSaveNoteClicked(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrWhiteSpace(noteEntry.Text))
         {
-            InitializeComponent();
-        }
+            var note = new Persona
+            {
+                Text = noteEntry.Text,
+                Date = DateTime.Now
+            };
 
-        private void OnCounterClicked(object? sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            await App.Database.SaveNoteAsync(note);
+            noteEntry.Text = string.Empty;
+            await LoadNotes();
         }
     }
+
+    private async Task LoadNotes()
+    {
+        var notes = await App.Database.GetNotesAsync();
+        notesListView.ItemsSource = notes;
+    }
 }
+
