@@ -1,33 +1,27 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TRojas_People.MainPage"
-             Title="Notas">
+             Title="People">
 
     <VerticalStackLayout Padding="30" Spacing="15">
 
-        <Label Text="Escribe una nota:"
-               FontAttributes="Bold"
-               FontSize="18" />
+        <Entry x:Name="nameEntry" Placeholder="Ingresa el nombre" />
 
-        <Entry x:Name="noteEntry"
-               Placeholder="Escribe aquí"
-               FontSize="16" />
+        <Button Text="Agregar Persona" Clicked="OnAddPersonClicked" />
 
-        <Button Text="Guardar Nota"
-                FontAttributes="Bold"
-                Clicked="OnSaveNoteClicked" />
+        <Label x:Name="statusLabel" Text="" FontSize="14" />
 
-        <ListView x:Name="notesListView"
-                  HasUnevenRows="True"
-                  SeparatorVisibility="Default">
+        <Button Text="Obtener Todas las Personas" Clicked="OnGetPeopleClicked" />
+
+        <ListView x:Name="peopleListView">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Text}"
-                              Detail="{Binding Date}" />
+                    <TextCell Text="{Binding Name}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
     </VerticalStackLayout>
 </ContentPage>
+
 
