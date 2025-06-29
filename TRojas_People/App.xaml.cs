@@ -12,7 +12,7 @@ public partial class App : Application
         {
             if (database == null)
             {
-                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "notes.db3");
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "persona.db3");
                 database = new PersonaDatabase(dbPath);
             }
             return database;
