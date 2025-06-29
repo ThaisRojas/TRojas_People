@@ -2,7 +2,7 @@
 
 namespace TRojas_People.Models
 {
-    public class Person
+    public class Persona
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
